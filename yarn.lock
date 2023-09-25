@@ -664,13 +664,6 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.8.tgz#6b79032e760a0899cd4204710beede972a3a185f"
   integrity sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==
 
-"@react-admin/ra-ai@^4.0.5":
-  version "4.0.5"
-  resolved "https://registry.marmelab.com/download/@react-admin/ra-ai/4.0.5/5f8766728d65dae63e32650b91aed3127edb5489#5f8766728d65dae63e32650b91aed3127edb5489"
-  integrity sha512-kTA55M+s2r6RXM3Hoym1zkkSTIWK5S/uAlop+KEiFo41z2BZuUUMzWQ8c+KSwp2AgwR72S1YYjkaQzR07FGz1Q==
-  dependencies:
-    use-debounce "^9.0.4"
-
 "@remirror/core-constants@^2.0.2":
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/@remirror/core-constants/-/core-constants-2.0.2.tgz#f05eccdc69e3a65e7d524b52548f567904a11a1a"
@@ -3584,11 +3577,6 @@ uri-js@^4.2.2:
   integrity sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==
   dependencies:
     punycode "^2.1.0"
-
-use-debounce@^9.0.4:
-  version "9.0.4"
-  resolved "https://registry.yarnpkg.com/use-debounce/-/use-debounce-9.0.4.tgz#51d25d856fbdfeb537553972ce3943b897f1ac85"
-  integrity sha512-6X8H/mikbrt0XE8e+JXRtZ8yYVvKkdYRfmIhWZYsP8rcNs9hk3APV8Ua2mFkKRLcJKVdnX2/Vwrmg2GWKUQEaQ==
 
 vite@^4.3.9:
   version "4.4.9"
