@@ -39,6 +39,7 @@ export const CompositionEdit = ({ id }: { id: number }) => {
               helperText={false}
               autoFocus
               multiline
+              minRows={20}
               fullWidth
               sx={{
                 "& .MuiInputBase-root:before": { display: "none" },

@@ -3,7 +3,6 @@ import {
   InfiniteList,
   SimpleList,
   DateField,
-  InfinitePagination,
   useRedirect,
   FilterLiveSearch,
   useListContext,
@@ -55,7 +54,6 @@ export const CompositionList = () => {
           empty={false}
           sort={{ field: "updated_at", order: "DESC" }}
           disableSyncWithLocation
-          pagination={<InfinitePagination />}
           component="div"
           queryOptions={{
             onSuccess: (data: any) => {
