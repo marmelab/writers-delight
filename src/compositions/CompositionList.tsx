@@ -14,6 +14,12 @@ import { CompositionEmpty } from "./CompositionEmpty";
 import { CreateCompositionButton } from "./CreateCompositionButton";
 import { notFirstLine } from "./textUtils";
 
+const ListActions = () => (
+  <Stack direction="row" sx={{ px: 1, mt: 1 }}>
+    <CreateCompositionButton />
+  </Stack>
+);
+
 export const CompositionList = () => {
   const [firstRecord, setFirstRecord] = useState<number>();
   const redirect = useRedirect();
@@ -32,11 +38,7 @@ export const CompositionList = () => {
         borderRight="solid 1px #ccc"
       >
         <InfiniteList
-          actions={
-            <Stack direction="row" sx={{ px: 1, mt: 1 }}>
-              <CreateCompositionButton />
-            </Stack>
-          }
+          actions={<ListActions />}
           empty={false}
           sort={{ field: "updated_at", order: "DESC" }}
           disableSyncWithLocation
