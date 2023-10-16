@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import {
   InfiniteList,
   SimpleList,
   DateField,
   InfinitePagination,
   useRedirect,
+  FilterLiveSearch,
+  useListContext,
 } from "react-admin";
 import { Box, Stack } from "@mui/material";
 import { useLocation, matchPath } from "react-router-dom";
@@ -19,6 +21,20 @@ const ListActions = () => (
     <CreateCompositionButton />
   </Stack>
 );
+
+interface ListContentProps {
+  empty: ReactNode;
+  notEmpty: ReactNode;
+}
+
+const ListContent = ({ empty, notEmpty }: ListContentProps) => {
+  const { isLoading, data, filterValues } = useListContext();
+  return !isLoading &&
+    data?.length === 0 &&
+    (!filterValues || Object.keys(filterValues).length === 0)
+    ? empty
+    : notEmpty;
+};
 
 export const CompositionList = () => {
   const [firstRecord, setFirstRecord] = useState<number>();
@@ -52,29 +68,48 @@ export const CompositionList = () => {
             },
           }}
         >
-          <SimpleList
-            primaryText="%{title}"
-            secondaryText={(record) =>
-              notFirstLine(record.body).substring(0, 50).trim() || <br />
-            }
-            tertiaryText={(record) => (
-              <DateField record={record} source="updated_at" />
-            )}
-            sx={{
-              py: 0,
-              "& .MuiListItemText-secondary": {
-                overflow: "hidden",
-                whiteSpace: "nowrap",
-                textOverflow: "ellipsis",
-                width: 268,
-              },
-            }}
-            rowSx={(record) =>
-              !!match && parseInt((match as any).params.id, 10) === record.id
-                ? { backgroundColor: "#eee" }
-                : null
-            }
+          <ListContent
             empty={<CompositionEmpty />}
+            notEmpty={
+              <>
+                <FilterLiveSearch
+                  fullWidth
+                  // @ts-ignore
+                  variant="standard"
+                  label="Search all compositions"
+                  hiddenLabel
+                  sx={{
+                    px: 1,
+                    "& .MuiInput-root:before": { display: "none" },
+                    "& .MuiInput-root:after": { display: "none" },
+                  }}
+                />
+                <SimpleList
+                  primaryText="%{title}"
+                  secondaryText={(record) =>
+                    notFirstLine(record.body).substring(0, 50).trim() || <br />
+                  }
+                  tertiaryText={(record) => (
+                    <DateField record={record} source="updated_at" />
+                  )}
+                  sx={{
+                    py: 0,
+                    "& .MuiListItemText-secondary": {
+                      overflow: "hidden",
+                      whiteSpace: "nowrap",
+                      textOverflow: "ellipsis",
+                      width: 268,
+                    },
+                  }}
+                  rowSx={(record) =>
+                    !!match &&
+                    parseInt((match as any).params.id, 10) === record.id
+                      ? { backgroundColor: "#eee" }
+                      : null
+                  }
+                />
+              </>
+            }
           />
         </InfiniteList>
       </Box>
