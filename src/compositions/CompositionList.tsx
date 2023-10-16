@@ -1,8 +1,10 @@
+import { useState } from "react";
 import {
   InfiniteList,
   SimpleList,
   DateField,
   InfinitePagination,
+  useRedirect,
 } from "react-admin";
 import { Box, Stack } from "@mui/material";
 import { useLocation, matchPath } from "react-router-dom";
@@ -13,9 +15,13 @@ import { CreateCompositionButton } from "./CreateCompositionButton";
 import { notFirstLine } from "./textUtils";
 
 export const CompositionList = () => {
+  const [firstRecord, setFirstRecord] = useState<number>();
+  const redirect = useRedirect();
   const location = useLocation();
   const match = matchPath("/compositions/:id", location.pathname);
-
+  if (!match && firstRecord) {
+    redirect(`/compositions/${firstRecord}`);
+  }
   return (
     <Box display="flex" gap={2} width="100%">
       <Box
@@ -36,6 +42,13 @@ export const CompositionList = () => {
           disableSyncWithLocation
           pagination={<InfinitePagination />}
           component="div"
+          queryOptions={{
+            onSuccess: (data: any) => {
+              if (data.pages.length > 0 && data.pages[0].data.length > 0) {
+                setFirstRecord(data.pages[0].data[0].id);
+              }
+            },
+          }}
         >
           <SimpleList
             primaryText="%{title}"
