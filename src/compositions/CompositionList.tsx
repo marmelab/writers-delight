@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import { ReactNode } from "react";
 import {
   InfiniteList,
   SimpleList,
@@ -37,13 +37,10 @@ const ListContent = ({ empty, notEmpty }: ListContentProps) => {
 };
 
 export const CompositionList = () => {
-  const [firstRecord, setFirstRecord] = useState<number>();
   const redirect = useRedirect();
   const location = useLocation();
   const match = matchPath("/compositions/:id", location.pathname);
-  if (!match && firstRecord) {
-    redirect(`/compositions/${firstRecord}`);
-  }
+
   return (
     <Box display="flex" gap={2} width="100%">
       <Box
@@ -62,8 +59,12 @@ export const CompositionList = () => {
           component="div"
           queryOptions={{
             onSuccess: (data: any) => {
-              if (data.pages.length > 0 && data.pages[0].data.length > 0) {
-                setFirstRecord(data.pages[0].data[0].id);
+              if (
+                !match &&
+                data.pages.length > 0 &&
+                data.pages[0].data.length > 0
+              ) {
+                redirect(`/compositions/${data.pages[0].data[0].id}`);
               }
             },
           }}
@@ -113,7 +114,6 @@ export const CompositionList = () => {
           />
         </InfiniteList>
       </Box>
-
       {!!match && <CompositionEdit id={(match as any).params.id} />}
     </Box>
   );
