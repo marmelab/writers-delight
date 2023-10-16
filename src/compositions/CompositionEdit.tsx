@@ -1,4 +1,4 @@
-import { Edit, Form, TextInput } from "react-admin";
+import { EditBase, Form, TextInput } from "react-admin";
 import { AutoSave } from "@react-admin/ra-form-layout";
 import { PredictiveTextInput } from "@react-admin/ra-ai";
 import { Box, Container } from "@mui/material";
@@ -12,7 +12,7 @@ export const CompositionEdit = ({ id }: { id: number }) => {
     ? PredictiveTextInput
     : TextInput;
   return (
-    <Edit<Composition>
+    <EditBase<Composition>
       id={id}
       sx={{ width: "100%" }}
       actions={false}
@@ -24,34 +24,30 @@ export const CompositionEdit = ({ id }: { id: number }) => {
       })}
       component="div"
     >
-      <Form key={id}>
-        <Box
-          textAlign="right"
-          width="100%"
-          display="flex"
-          alignItems="center"
-          px={1}
-        >
-          <Box flex="1" />
-          <AutoSave debounce={1000} />
-          <MoreActionsButton />
-        </Box>
-        <Container maxWidth="md">
-          <BodyInput
-            autoFocus
-            label={false}
-            helperText={false}
-            multiline
-            source="body"
-            fullWidth
-            variant="standard"
-            sx={{
-              "& .MuiInputBase-root:before": { display: "none" },
-              "& .MuiInputBase-root:after": { display: "none" },
-            }}
-          />
-        </Container>
-      </Form>
-    </Edit>
+      <Box width="100%" mt={1}>
+        <Form key={id}>
+          <Box width="100%" display="flex" alignItems="center" px={1}>
+            <Box flex="1" />
+            <AutoSave debounce={1000} />
+            <MoreActionsButton />
+          </Box>
+          <Container maxWidth="md">
+            <BodyInput
+              source="body"
+              variant="standard"
+              label={false}
+              helperText={false}
+              autoFocus
+              multiline
+              fullWidth
+              sx={{
+                "& .MuiInputBase-root:before": { display: "none" },
+                "& .MuiInputBase-root:after": { display: "none" },
+              }}
+            />
+          </Container>
+        </Form>
+      </Box>
+    </EditBase>
   );
 };

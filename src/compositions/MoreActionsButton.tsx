@@ -68,7 +68,7 @@ export const MoreActionsButton = () => {
         confirmColor={"primary"}
         translateOptions={{
           name: "composition",
-          id: record.id,
+          id: record?.id,
         }}
         onConfirm={handleDelete}
         onClose={handleDialogClose}

@@ -80,7 +80,7 @@ export const CompositionList = () => {
                   label="Search all compositions"
                   hiddenLabel
                   sx={{
-                    px: 1,
+                    px: 2,
                     "& .MuiInput-root:before": { display: "none" },
                     "& .MuiInput-root:after": { display: "none" },
                   }}
