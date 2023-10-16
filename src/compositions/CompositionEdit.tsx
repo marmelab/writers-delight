@@ -1,16 +1,11 @@
-import { Edit, SimpleForm, TextInput, Toolbar } from "react-admin";
+import { Edit, SimpleForm, TextInput } from "react-admin";
 import { AutoSave } from "@react-admin/ra-form-layout";
 import { PredictiveTextInput } from "@react-admin/ra-ai";
+import { Box, Container } from "@mui/material";
 
-import { CompositionActions } from "./CompositionActions";
+import { MoreActionsButton } from "./MoreActionsButton";
 import { firstLine } from "./textUtils";
 import type { Composition } from "./types";
-
-const AutoSaveToolbar = () => (
-  <Toolbar>
-    <AutoSave />
-  </Toolbar>
-);
 
 export const CompositionEdit = ({ id }: { id: number }) => {
   const BodyInput = localStorage.getItem("OpenAIKey")
@@ -20,28 +15,42 @@ export const CompositionEdit = ({ id }: { id: number }) => {
     <Edit<Composition>
       id={id}
       sx={{ width: "100%" }}
-      actions={<CompositionActions />}
+      actions={false}
       mutationMode="optimistic"
       transform={(data) => ({
         ...data,
         title: firstLine(data.body),
         updated_at: new Date().toISOString(),
       })}
+      component="div"
     >
-      <SimpleForm toolbar={<AutoSaveToolbar />}>
-        <BodyInput
-          label={false}
-          helperText={false}
-          minRows={10}
-          multiline
-          source="body"
-          fullWidth
-          variant="standard"
-          sx={{
-            "& .MuiInputBase-root:before": { display: "none" },
-            "& .MuiInputBase-root:after": { display: "none" },
-          }}
-        />
+      <SimpleForm toolbar={<></>} sx={{ p: 0, mt: -1 }} key={id}>
+        <Box
+          textAlign="right"
+          width="100%"
+          display="flex"
+          alignItems="center"
+          px={1}
+        >
+          <Box flex="1" />
+          <AutoSave debounce={1000} />
+          <MoreActionsButton />
+        </Box>
+        <Container maxWidth="md">
+          <BodyInput
+            autoFocus
+            label={false}
+            helperText={false}
+            multiline
+            source="body"
+            fullWidth
+            variant="standard"
+            sx={{
+              "& .MuiInputBase-root:before": { display: "none" },
+              "& .MuiInputBase-root:after": { display: "none" },
+            }}
+          />
+        </Container>
       </SimpleForm>
     </Edit>
   );

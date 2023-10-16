@@ -1,6 +1,5 @@
 import * as React from "react";
 import {
-  TopToolbar,
   useDeleteWithConfirmController,
   useRecordContext,
   Confirm,
@@ -11,7 +10,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 
 import type { Composition } from "./types";
 
-const MoreActionsButton = () => {
+export const MoreActionsButton = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const menuOpen = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -35,6 +34,7 @@ const MoreActionsButton = () => {
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
+        size="small"
       >
         <MoreVertIcon fontSize="small" />
       </IconButton>
@@ -76,9 +76,3 @@ const MoreActionsButton = () => {
     </>
   );
 };
-
-export const CompositionActions = () => (
-  <TopToolbar>
-    <MoreActionsButton />
-  </TopToolbar>
-);

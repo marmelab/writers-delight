@@ -2,15 +2,13 @@ import {
   InfiniteList,
   SimpleList,
   DateField,
-  CreateButton,
-  ExportButton,
-  TopToolbar,
   InfinitePagination,
 } from "react-admin";
-import { Box } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import { useLocation, matchPath } from "react-router-dom";
 import { CompositionEdit } from "./CompositionEdit";
-import { CompositionCreate } from "./CompositionCreate";
+
+import { CreateCompositionButton } from "./CreateCompositionButton";
 
 import { notFirstLine } from "./textUtils";
 
@@ -19,29 +17,36 @@ export const CompositionList = () => {
   const match = matchPath("/compositions/:id", location.pathname);
 
   return (
-    <Box display="flex" gap={2}>
-      <Box width={300} flexShrink={0} sx={{ overflowY: "auto" }} height="100vh">
+    <Box display="flex" gap={2} width="100%">
+      <Box
+        width={320}
+        flexShrink={0}
+        sx={{ overflowY: "auto" }}
+        height="100vh"
+        borderRight="solid 1px #ccc"
+      >
         <InfiniteList
           actions={
-            <TopToolbar>
-              <ExportButton />
-              <CreateButton />
-            </TopToolbar>
+            <Stack direction="row" sx={{ px: 1, mt: 1 }}>
+              <CreateCompositionButton />
+            </Stack>
           }
           empty={false}
           sort={{ field: "updated_at", order: "DESC" }}
           disableSyncWithLocation
           pagination={<InfinitePagination />}
+          component="div"
         >
           <SimpleList
             primaryText="%{title}"
             secondaryText={(record) =>
-              `${notFirstLine(record.body).substring(0, 50)}`
+              notFirstLine(record.body).substring(0, 50).trim() || <br />
             }
             tertiaryText={(record) => (
               <DateField record={record} source="updated_at" />
             )}
             sx={{
+              py: 0,
               "& .MuiListItemText-secondary": {
                 overflow: "hidden",
                 whiteSpace: "nowrap",
@@ -57,12 +62,8 @@ export const CompositionList = () => {
           />
         </InfiniteList>
       </Box>
-      {!!match &&
-        (match.params.id === "create" ? (
-          <CompositionCreate />
-        ) : (
-          <CompositionEdit id={(match as any).params.id} />
-        ))}
+
+      {!!match && <CompositionEdit id={(match as any).params.id} />}
     </Box>
   );
 };
