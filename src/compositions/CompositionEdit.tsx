@@ -1,4 +1,4 @@
-import { Edit, SimpleForm, TextInput } from "react-admin";
+import { Edit, Form, TextInput } from "react-admin";
 import { AutoSave } from "@react-admin/ra-form-layout";
 import { PredictiveTextInput } from "@react-admin/ra-ai";
 import { Box, Container } from "@mui/material";
@@ -24,7 +24,7 @@ export const CompositionEdit = ({ id }: { id: number }) => {
       })}
       component="div"
     >
-      <SimpleForm toolbar={<></>} sx={{ p: 0, mt: -1 }} key={id}>
+      <Form key={id}>
         <Box
           textAlign="right"
           width="100%"
@@ -51,7 +51,7 @@ export const CompositionEdit = ({ id }: { id: number }) => {
             }}
           />
         </Container>
-      </SimpleForm>
+      </Form>
     </Edit>
   );
 };
