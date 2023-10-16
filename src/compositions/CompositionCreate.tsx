@@ -1,10 +1,27 @@
-import { Create, SimpleForm, TextInput } from "react-admin";
+import { Create, SimpleForm, TextInput, TopToolbar } from "react-admin";
+import { PredictiveTextInput } from "@react-admin/ra-ai";
 
-export const CompositionCreate = () => (
-  <Create record={{ created_at: Date.now() }} sx={{ width: "100%" }}>
-    <SimpleForm>
-      <TextInput source="title" fullWidth />
-      <TextInput multiline source="body" fullWidth />
-    </SimpleForm>
-  </Create>
-);
+import type { Composition } from "./types";
+
+export const CompositionCreate = () => {
+  const BodyInput = localStorage.getItem("OpenAIKey")
+    ? PredictiveTextInput
+    : TextInput;
+  return (
+    <Create<Composition>
+      sx={{ width: "100%" }}
+      redirect="edit"
+      actions={<TopToolbar />}
+      transform={(data) => ({
+        ...data,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+      })}
+    >
+      <SimpleForm>
+        <TextInput source="title" fullWidth />
+        <BodyInput multiline source="body" fullWidth />
+      </SimpleForm>
+    </Create>
+  );
+};
