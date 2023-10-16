@@ -6,10 +6,10 @@ import {
 } from "react-admin";
 import { Box, Stack } from "@mui/material";
 import { useLocation, matchPath } from "react-router-dom";
+
 import { CompositionEdit } from "./CompositionEdit";
-
+import { CompositionEmpty } from "./CompositionEmpty";
 import { CreateCompositionButton } from "./CreateCompositionButton";
-
 import { notFirstLine } from "./textUtils";
 
 export const CompositionList = () => {
@@ -59,6 +59,7 @@ export const CompositionList = () => {
                 ? { backgroundColor: "#eee" }
                 : null
             }
+            empty={<CompositionEmpty />}
           />
         </InfiniteList>
       </Box>

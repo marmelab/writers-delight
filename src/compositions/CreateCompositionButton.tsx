@@ -5,24 +5,30 @@ import { Composition } from "./types";
 
 export const CreateCompositionButton = () => {
   const redirect = useRedirect();
-  const [create] = useCreate<Composition>(
-    "compositions",
-    {
-      data: {
-        title: "New composition",
-        created_at: new Date().toISOString(),
-        updated_at: new Date().toISOString(),
-      },
+  const options = {
+    onSuccess: (data: Composition) => {
+      redirect(`/compositions/${data.id}`);
     },
-    {
-      onSuccess: (data) => {
-        redirect(`/compositions/${data.id}`);
-      },
-    }
-  );
+  };
+  const [create] = useCreate<Composition>();
   return (
     <Tooltip title="New composition" placement="bottom">
-      <IconButton onClick={() => create()} size="small">
+      <IconButton
+        onClick={() =>
+          create(
+            "compositions",
+            {
+              data: {
+                title: "New composition",
+                created_at: new Date().toISOString(),
+                updated_at: new Date().toISOString(),
+              },
+            },
+            options
+          )
+        }
+        size="small"
+      >
         <EditNoteIcon fontSize="small" />
       </IconButton>
     </Tooltip>
