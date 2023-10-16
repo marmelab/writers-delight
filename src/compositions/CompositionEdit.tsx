@@ -3,6 +3,7 @@ import { AutoSave } from "@react-admin/ra-form-layout";
 import { PredictiveTextInput } from "@react-admin/ra-ai";
 
 import { CompositionActions } from "./CompositionActions";
+import { firstLine } from "./textUtils";
 import type { Composition } from "./types";
 
 const AutoSaveToolbar = () => (
@@ -21,15 +22,30 @@ export const CompositionEdit = ({ id }: { id: number }) => {
       sx={{ width: "100%" }}
       actions={<CompositionActions />}
       mutationMode="optimistic"
-      transform={(data) => ({ ...data, updated_at: new Date().toISOString() })}
+      transform={(data) => ({
+        ...data,
+        title: firstLine(data.body),
+        updated_at: new Date().toISOString(),
+      })}
     >
       <SimpleForm
         resetOptions={{ keepDirtyValues: true }}
         toolbar={<AutoSaveToolbar />}
         key={id}
       >
-        <TextInput source="title" fullWidth />
-        <BodyInput multiline source="body" fullWidth />
+        <BodyInput
+          label={false}
+          helperText={false}
+          minRows={10}
+          multiline
+          source="body"
+          fullWidth
+          variant="standard"
+          sx={{
+            "& .MuiInputBase-root:before": { display: "none" },
+            "& .MuiInputBase-root:after": { display: "none" },
+          }}
+        />
       </SimpleForm>
     </Edit>
   );

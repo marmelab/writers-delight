@@ -12,6 +12,8 @@ import { useLocation, matchPath } from "react-router-dom";
 import { CompositionEdit } from "./CompositionEdit";
 import { CompositionCreate } from "./CompositionCreate";
 
+import { notFirstLine } from "./textUtils";
+
 export const CompositionList = () => {
   const location = useLocation();
   const match = matchPath("/compositions/:id", location.pathname);
@@ -33,7 +35,9 @@ export const CompositionList = () => {
         >
           <SimpleList
             primaryText="%{title}"
-            secondaryText={(record) => `${record.body?.substring(0, 50)}`}
+            secondaryText={(record) =>
+              `${notFirstLine(record.body).substring(0, 50)}`
+            }
             tertiaryText={(record) => (
               <DateField record={record} source="updated_at" />
             )}
