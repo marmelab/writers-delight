@@ -28,11 +28,7 @@ export const CompositionEdit = ({ id }: { id: number }) => {
         updated_at: new Date().toISOString(),
       })}
     >
-      <SimpleForm
-        resetOptions={{ keepDirtyValues: true }}
-        toolbar={<AutoSaveToolbar />}
-        key={id}
-      >
+      <SimpleForm toolbar={<AutoSaveToolbar />}>
         <BodyInput
           label={false}
           helperText={false}
