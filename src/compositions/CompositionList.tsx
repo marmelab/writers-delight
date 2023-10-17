@@ -13,6 +13,7 @@ import { useLocation, matchPath } from "react-router-dom";
 import { CompositionEdit } from "./CompositionEdit";
 import { CompositionEmpty } from "./CompositionEmpty";
 import { CreateCompositionButton } from "./CreateCompositionButton";
+import { AISwitch } from "./AISwitch";
 import { notFirstLine } from "./textUtils";
 
 const ListActions = () => (
@@ -48,6 +49,8 @@ export const CompositionList = () => {
         sx={{ overflowY: "auto" }}
         height="100vh"
         borderRight="solid 1px #ccc"
+        position="relative"
+        paddingBottom={3}
       >
         <InfiniteList
           actions={<ListActions />}
@@ -111,6 +114,7 @@ export const CompositionList = () => {
             }
           />
         </InfiniteList>
+        <AISwitch />
       </Box>
       {!!match && <CompositionEdit id={(match as any).params.id} />}
     </Box>

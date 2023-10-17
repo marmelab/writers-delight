@@ -1,4 +1,4 @@
-import { EditBase, Form, TextInput } from "react-admin";
+import { EditBase, Form, TextInput, useStore } from "react-admin";
 import { AutoSave } from "@react-admin/ra-form-layout";
 import { PredictiveTextInput } from "@react-admin/ra-ai";
 import { Box, Container } from "@mui/material";
@@ -8,9 +8,8 @@ import { firstLine } from "./textUtils";
 import type { Composition } from "./types";
 
 export const CompositionEdit = ({ id }: { id: number }) => {
-  const BodyInput = localStorage.getItem("OpenAIKey")
-    ? PredictiveTextInput
-    : TextInput;
+  const [assistantEnabled] = useStore("assistantEnabled", true);
+  const BodyInput = assistantEnabled ? PredictiveTextInput : TextInput;
   return (
     <EditBase<Composition>
       id={id}
