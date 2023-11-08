@@ -30,7 +30,7 @@ export const CompositionEdit = ({ id }: { id: number }) => {
             <AutoSave debounce={1000} />
             <MoreActionsButton />
           </Box>
-          <Container maxWidth="md">
+          <Container maxWidth="sm">
             <BodyInput
               source="body"
               variant="standard"

@@ -11,7 +11,8 @@ import { Box, Stack } from "@mui/material";
 import { useLocation, matchPath } from "react-router-dom";
 
 import { CompositionEdit } from "./CompositionEdit";
-import { CompositionEmpty } from "./CompositionEmpty";
+import { CompositionEditEmpty } from "./CompositionEditEmpty";
+import { CompositionListEmpty } from "./CompositionListEmpty";
 import { CreateCompositionButton } from "./CreateCompositionButton";
 import { AISwitch } from "./AISwitch";
 import { notFirstLine } from "./textUtils";
@@ -71,7 +72,7 @@ export const CompositionList = () => {
           }}
         >
           <ListContent
-            empty={<CompositionEmpty />}
+            empty={<CompositionListEmpty />}
             notEmpty={
               <>
                 <FilterLiveSearch
@@ -116,7 +117,11 @@ export const CompositionList = () => {
         </InfiniteList>
         <AISwitch />
       </Box>
-      {!!match && <CompositionEdit id={(match as any).params.id} />}
+      {match ? (
+        <CompositionEdit id={(match as any).params.id} />
+      ) : (
+        <CompositionEditEmpty />
+      )}
     </Box>
   );
 };
