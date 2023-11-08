@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@react-admin/ra-form-layout": "^4.9.4",
-    "@react-admin/ra-ai": "^4.0.6",
+    "@react-admin/ra-ai": "^4.0.7",
     "@types/node": "^18.16.1",
     "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.7",

@@ -664,10 +664,10 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.8.tgz#6b79032e760a0899cd4204710beede972a3a185f"
   integrity sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==
 
-"@react-admin/ra-ai@^4.0.6":
-  version "4.0.6"
-  resolved "https://registry.marmelab.com/download/@react-admin/ra-ai/4.0.6/54b7c4ac3b06f0c6260d26871fecd570ec4482dc#54b7c4ac3b06f0c6260d26871fecd570ec4482dc"
-  integrity sha512-ixvgstJeXkP8Ga5wwircP7DPefJwsFocSEOcS0O+3+Rzo5qhg+seSX/RKtEdKeF6cnXskykPjaUd+BbTWY6acg==
+"@react-admin/ra-ai@^4.0.7":
+  version "4.0.7"
+  resolved "https://registry.marmelab.com/download/@react-admin/ra-ai/4.0.7/fdb1197b64cbf84edf0da02861b06d9187b88128#fdb1197b64cbf84edf0da02861b06d9187b88128"
+  integrity sha512-P91EZGNvmaz9j4Rbc9wuS2lh06iDKYHj7PqRQ4zX4Vp/672TTDNA7CVOCLZ/y+IawI4aCWLs6n8BtNzJesCBMg==
   dependencies:
     use-debounce "^9.0.4"
 
