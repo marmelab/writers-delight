@@ -58,6 +58,7 @@ export const AISwitch = () => {
       bgcolor="background.default"
       display="flex"
       justifyContent="space-between"
+      alignItems="center"
     >
       <FormGroup>
         <FormControlLabel
@@ -67,10 +68,20 @@ export const AISwitch = () => {
           label="AI Assistant"
         />
       </FormGroup>
-      {assistantEnabled && (
+      {assistantEnabled ? (
         <IconButton onClick={handleConfigure}>
           <SettingsIcon fontSize="small" />
         </IconButton>
+      ) : (
+        <Box
+          component="span"
+          sx={{
+            bgcolor: "primary.main",
+            width: 10,
+            height: 10,
+            borderRadius: "50%",
+          }}
+        />
       )}
       <Dialog
         fullWidth
