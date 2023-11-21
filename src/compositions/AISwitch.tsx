@@ -51,8 +51,7 @@ export const AISwitch = () => {
     <Box
       position="fixed"
       bottom={0}
-      px={2}
-      py={1}
+      padding="0.5em 0.5em 0.5em 1em"
       zIndex={2}
       width={319}
       bgcolor="background.default"
@@ -80,6 +79,7 @@ export const AISwitch = () => {
             width: 10,
             height: 10,
             borderRadius: "50%",
+            marginRight: 1.5,
           }}
         />
       )}

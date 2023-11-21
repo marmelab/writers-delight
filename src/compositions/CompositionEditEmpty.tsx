@@ -1,5 +1,4 @@
 import { Container, Typography } from "@mui/material";
-import EditNoteIcon from "@mui/icons-material/EditNoteRounded";
 
 export const CompositionEditEmpty = () => (
   <Container
@@ -11,8 +10,13 @@ export const CompositionEditEmpty = () => (
       justifyContent: "center",
     }}
   >
-    <Typography variant="body1" color="text.secondary" align="center">
-      <EditNoteIcon sx={{ fontSize: 200, opacity: 0.5 }} />
+    <Typography align="center" gutterBottom>
+      <img
+        src="./illustration.svg"
+        alt="writer by Hey Rabbit from Noun Project (CC BY 3.0)"
+        width="50%"
+        style={{ opacity: 0.6 }}
+      />
     </Typography>
     <Typography variant="h2" color="text.secondary" align="center" mb={1}>
       Writer&apos;s Delight

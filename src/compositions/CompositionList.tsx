@@ -18,7 +18,7 @@ import { AISwitch } from "./AISwitch";
 import { notFirstLine } from "./textUtils";
 
 const ListActions = () => (
-  <Stack direction="row" sx={{ px: 1, mt: 1 }}>
+  <Stack direction="row" sx={{ px: 1, mt: 1, mb: 1 }}>
     <CreateCompositionButton />
   </Stack>
 );
@@ -50,7 +50,7 @@ export const CompositionList = () => {
         sx={{ overflowY: "auto" }}
         height="100vh"
         borderRight="solid 1px #ccc"
-        position="relative"
+        position="fixed"
         paddingBottom={3}
       >
         <InfiniteList
@@ -85,6 +85,7 @@ export const CompositionList = () => {
                     px: 2,
                     "& .MuiInput-root:before": { display: "none" },
                     "& .MuiInput-root:after": { display: "none" },
+                    "& .MuiSvgIcon-root": { fontSize: "1.25rem" },
                   }}
                 />
                 <SimpleList
@@ -117,11 +118,13 @@ export const CompositionList = () => {
         </InfiniteList>
         <AISwitch />
       </Box>
-      {match ? (
-        <CompositionEdit id={(match as any).params.id} />
-      ) : (
-        <CompositionEditEmpty />
-      )}
+      <Box flex="1" marginLeft="320px">
+        {match ? (
+          <CompositionEdit id={(match as any).params.id} />
+        ) : (
+          <CompositionEditEmpty />
+        )}
+      </Box>
     </Box>
   );
 };
