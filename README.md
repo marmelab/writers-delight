@@ -2,6 +2,8 @@
 
 Write notes, essays, and stories with an AI assistant.
 
+[![Writer's Delight](./public/writers-delight.png)](https://marmelab.com/writers-delight)
+
 This demo uses [react-admin](https://marmelab.com/react-admin)'s built-in [AI capabilities](https://marmelab.com/react-admin/PredictiveTextInput.html) to provide an inline writing assistant. Try editing a composition to see text suggestions appearing in ghost text.
 
 By default, the suggestions use fake latin text, but you can connect the app to OpenAI to get real suggestions powered by ChatGPT. Your OpenAI API key will not be sent to any third-party, just to the OpenAI API.
