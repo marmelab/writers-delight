@@ -1,6 +1,6 @@
 # writers-delight
 
-Write notes, essays, and stories with an AI assistant.
+Write notes, essays, and stories with an AI assistant ([live demo](https://marmelab.com/writers-delight)).
 
 [![Writer's Delight](./public/writers-delight.png)](https://marmelab.com/writers-delight)
 
