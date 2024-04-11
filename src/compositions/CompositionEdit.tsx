@@ -1,4 +1,4 @@
-import { EditBase, Form, TextInput, useStore } from "react-admin";
+import { EditBase, Form, useStore } from "react-admin";
 import { AutoSave } from "@react-admin/ra-form-layout";
 import { PredictiveTextInput } from "@react-admin/ra-ai";
 import { Box, Container } from "@mui/material";
@@ -9,7 +9,6 @@ import type { Composition } from "./types";
 
 export const CompositionEdit = ({ id }: { id: number }) => {
   const [assistantEnabled] = useStore("assistantEnabled", true);
-  const BodyInput = assistantEnabled ? PredictiveTextInput : TextInput;
   const [model] = useStore("assistantModel", "gpt-3.5-turbo");
   return (
     <EditBase<Composition>
@@ -32,7 +31,7 @@ export const CompositionEdit = ({ id }: { id: number }) => {
             <MoreActionsButton />
           </Box>
           <Container maxWidth="sm">
-            <BodyInput
+            <PredictiveTextInput
               source="body"
               variant="standard"
               label={false}
@@ -46,6 +45,7 @@ export const CompositionEdit = ({ id }: { id: number }) => {
                 "& .MuiInputBase-root:after": { display: "none" },
               }}
               meta={{ model }}
+              queryOptions={{ enabled: assistantEnabled }}
             />
           </Container>
         </Form>

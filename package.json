@@ -12,11 +12,13 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "lodash": "^4.17.0"
   },
   "devDependencies": {
     "@react-admin/ra-ai": "^4.0.7",
     "@react-admin/ra-form-layout": "^4.9.4",
+    "@types/lodash": "^4.17.0",
     "@types/node": "^18.16.1",
     "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.7",

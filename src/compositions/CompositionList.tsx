@@ -16,6 +16,7 @@ import { CompositionListEmpty } from "./CompositionListEmpty";
 import { CreateCompositionButton } from "./CreateCompositionButton";
 import { AISwitch } from "./AISwitch";
 import { notFirstLine } from "./textUtils";
+import { HighlightSearchTerm } from "./HighlighhtSearchTerm";
 
 const ListActions = () => (
   <Stack direction="row" sx={{ px: 1, mt: 1, mb: 1 }}>
@@ -43,7 +44,17 @@ export const CompositionList = () => {
   const match = matchPath("/compositions/:id", location.pathname);
 
   return (
-    <Box display="flex" gap={2} width="100%">
+    <Box
+      display="flex"
+      gap={2}
+      width="100%"
+      sx={{
+        "& ::highlight(search)": {
+          backgroundColor: "yellow",
+          color: "black",
+        },
+      }}
+    >
       <Box
         width={320}
         flexShrink={0}
@@ -115,6 +126,7 @@ export const CompositionList = () => {
               </>
             }
           />
+          <HighlightSearchTerm />
         </InfiniteList>
         <AISwitch />
       </Box>
