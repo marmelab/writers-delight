@@ -10,6 +10,7 @@ import type { Composition } from "./types";
 export const CompositionEdit = ({ id }: { id: number }) => {
   const [assistantEnabled] = useStore("assistantEnabled", true);
   const BodyInput = assistantEnabled ? PredictiveTextInput : TextInput;
+  const [model] = useStore("assistantModel", "gpt-3.5-turbo");
   return (
     <EditBase<Composition>
       id={id}
@@ -44,6 +45,7 @@ export const CompositionEdit = ({ id }: { id: number }) => {
                 "& .MuiInputBase-root:before": { display: "none" },
                 "& .MuiInputBase-root:after": { display: "none" },
               }}
+              meta={{ model }}
             />
           </Container>
         </Form>

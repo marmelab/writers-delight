@@ -665,9 +665,9 @@
   integrity sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==
 
 "@react-admin/ra-ai@^4.0.7":
-  version "4.0.7"
-  resolved "https://registry.marmelab.com/download/@react-admin/ra-ai/4.0.7/fdb1197b64cbf84edf0da02861b06d9187b88128#fdb1197b64cbf84edf0da02861b06d9187b88128"
-  integrity sha512-P91EZGNvmaz9j4Rbc9wuS2lh06iDKYHj7PqRQ4zX4Vp/672TTDNA7CVOCLZ/y+IawI4aCWLs6n8BtNzJesCBMg==
+  version "4.0.9"
+  resolved "https://registry.marmelab.com/download/@react-admin/ra-ai/4.0.9/12ec4e75546659ac3ea12d73405bf77e7c6961d3#12ec4e75546659ac3ea12d73405bf77e7c6961d3"
+  integrity sha512-M9BL4Cjwc5ajP9RNsixoBji/clIt/wl1yWeLBi6kCfO++6LuxnvgE8fmIbGiSCaioGqYSt7iPOdzFnhH9NdDKQ==
   dependencies:
     use-debounce "^9.0.4"
 

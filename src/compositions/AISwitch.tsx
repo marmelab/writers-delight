@@ -13,6 +13,7 @@ import {
   DialogActions,
   IconButton,
   InputAdornment,
+  MenuItem,
   TextField,
 } from "@mui/material";
 import KeyIcon from "@mui/icons-material/Key";
@@ -24,6 +25,7 @@ export const AISwitch = () => {
     "assistantEnabled",
     true
   );
+  const [model, setModel] = useStore("assistantModel", "gpt-3.5-turbo");
   const [open, setOpen] = React.useState(false);
 
   const handleToggle = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -133,6 +135,18 @@ export const AISwitch = () => {
                 ),
               }}
             />
+            <TextField
+              select
+              fullWidth
+              name="model"
+              label="Model"
+              value={model}
+              onChange={(e) => setModel(e.target.value)}
+              sx={{ mt: 2 }}
+            >
+              <MenuItem value="gpt-3.5-turbo">GPT-3.5 Turbo</MenuItem>
+              <MenuItem value="gpt-4-turbo">GPT-4 Turbo</MenuItem>
+            </TextField>
           </DialogContent>
           <DialogActions sx={{ mb: 1 }}>
             <Button onClick={() => setOpen(false)}>Cancel</Button>
