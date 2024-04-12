@@ -16,48 +16,27 @@ export const HighlightSearchTerm = () => {
   const location = useLocation();
 
   useEffect(() => {
-    if (!CSS.highlights) return;
+    if (!CSS.highlights) return; // disable feature on Firefox as it does not support CSS Custom Highlight API
     CSS.highlights.clear();
     if (!search) return;
-    highlightSearchTerm(search);
+    highlightSearchTerm(
+      search,
+      ".MuiListItemText-primary>div, .MuiListItemText-secondary, [contenteditable=true]"
+    );
   }, [location.pathname, search]);
   return null;
 };
 
 // debounce allows to delay the highlight, which allows the composition to render before the highlight
-const highlightSearchTerm = debounce((search: string) => {
+const highlightSearchTerm = debounce((search: string, selector: string) => {
   const ranges: Range[] = [];
-  // highlight term in list of compositions
-  const list = document.querySelector(".MuiList-root");
-  if (list) {
-    list.querySelectorAll(".MuiListItemText-root").forEach((item) => {
-      // highlight term in primary text
-      const primary = item.querySelector(".MuiListItemText-primary");
-      if (primary && primary.firstChild && primary.firstChild.firstChild) {
-        ranges.push(
-          ...getRangesForSearchTermInElement(
-            primary.firstChild as Element,
-            search
-          )
-        );
-      }
-      // highlight term in secondary text
-      const secondary = item.querySelector(".MuiListItemText-secondary");
-      if (secondary && secondary.firstChild) {
-        ranges.push(...getRangesForSearchTermInElement(secondary, search));
-      }
-    });
-  }
-  // highlight term in PredictiveTextInput
-  const contentEditable = document.querySelector("[contenteditable=true]");
-  if (contentEditable && contentEditable.firstChild) {
-    ranges.push(...getRangesForSearchTermInElement(contentEditable, search));
-  }
-
+  const elements = document.querySelectorAll(selector);
+  Array.from(elements).forEach((element) => {
+    ranges.push(...getRangesForSearchTermInElement(element as Element, search));
+  });
   if (ranges.length === 0) return;
-
-  // eslint-disable-next-line no-undef
-  const highlight = new Highlight(...ranges);
+  const highlight = new Highlight(...ranges); // eslint-disable-line no-undef
+  // create a CSS highlight that can be styled with the ::highlight(search) pseudo-element
   CSS.highlights.set("search", highlight);
 }, 100);
 
