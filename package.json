@@ -11,13 +11,17 @@
     "format": "prettier --write ./src"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "lodash": "^4.17.0"
-  },
-  "devDependencies": {
     "@react-admin/ra-ai": "^4.0.7",
     "@react-admin/ra-form-layout": "^4.9.4",
+    "highlight-search-term": "^1.0.0",
+    "lodash": "^4.17.0",
+    "ra-data-local-storage": "^4.15.0",
+    "ra-input-rich-text": "^4.15.0",
+    "react": "^18.2.0",
+    "react-admin": "^4.15.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
     "@types/lodash": "^4.17.0",
     "@types/node": "^18.16.1",
     "@types/react": "^18.0.22",
@@ -31,9 +35,6 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "gh-pages": "^6.1.0",
     "prettier": "^2.8.8",
-    "ra-data-local-storage": "^4.15.0",
-    "ra-input-rich-text": "^4.15.0",
-    "react-admin": "^4.15.0",
     "typescript": "^5.1.6",
     "vite": "^4.3.9"
   }
