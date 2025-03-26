@@ -25,7 +25,7 @@ export const AISwitch = () => {
     "assistantEnabled",
     true
   );
-  const [model, setModel] = useStore("assistantModel", "gpt-3.5-turbo");
+  const [model, setModel] = useStore("assistantModel", "gpt-4o-mini");
   const [open, setOpen] = React.useState(false);
 
   const handleToggle = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -144,8 +144,8 @@ export const AISwitch = () => {
               onChange={(e) => setModel(e.target.value)}
               sx={{ mt: 2 }}
             >
-              <MenuItem value="gpt-3.5-turbo">GPT-3.5 Turbo</MenuItem>
-              <MenuItem value="gpt-4-turbo">GPT-4 Turbo</MenuItem>
+              <MenuItem value="gpt-4o-mini">GPT-4o Mini</MenuItem>
+              <MenuItem value="gpt-4o">GPT-4o</MenuItem>
             </TextField>
           </DialogContent>
           <DialogActions sx={{ mb: 1 }}>
