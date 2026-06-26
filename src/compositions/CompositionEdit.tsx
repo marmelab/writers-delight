@@ -9,7 +9,7 @@ import type { Composition } from "./types";
 
 export const CompositionEdit = ({ id }: { id: number }) => {
   const [assistantEnabled] = useStore("assistantEnabled", true);
-  const [model] = useStore("assistantModel", "gpt-3.5-turbo");
+  const [model] = useStore("assistantModel", "llama-3.3-70b-versatile");
   return (
     <EditBase<Composition>
       id={id}

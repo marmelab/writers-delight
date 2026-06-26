@@ -65,9 +65,9 @@ export const SplashScreen = () => {
         <Typography variant="body2" color="text.secondary" gutterBottom>
           By default, the suggestions use fake latin text, but you can connect
           the app to{" "}
-          <a href="https://platform.openai.com/docs/introduction">OpenAI</a> to
-          get real suggestions powered by ChatGPT. Your OpenAI API key will not
-          be sent to any third-party, just to the OpenAI API.
+          <a href="https://console.groq.com/">Groq</a> to
+          get real suggestions powered by Llama. Your Groq API key will not
+          be sent to any third-party, just to the Groq API.
         </Typography>
         <Typography variant="body2" color="text.secondary">
           This is an offline-first application: all your compositions are stored

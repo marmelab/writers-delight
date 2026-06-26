@@ -23,6 +23,15 @@ const addGetCompletionBasedOnLoremIpsum = (dataProvider: DataProvider) => ({
 
 export const dataProvider = addGetCompletionBasedOnLoremIpsum(
   addGetCompletionBasedOnOpenAIAPI({
+    endpoint: 'https://api.groq.com/openai/v1/chat/completions',
+    defaultParams: {
+      model: 'llama-3.3-70b-versatile',
+      temperature: 1,
+      max_tokens: 256,
+      top_p: 1,
+      frequency_penalty: 0,
+      presence_penalty: 0,
+    },
     dataProvider: localStorageDataProvider({
       loggingEnabled: true,
       defaultData: {

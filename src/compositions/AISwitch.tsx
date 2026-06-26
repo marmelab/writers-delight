@@ -25,7 +25,7 @@ export const AISwitch = () => {
     "assistantEnabled",
     true
   );
-  const [model, setModel] = useStore("assistantModel", "gpt-4o-mini");
+  const [model, setModel] = useStore("assistantModel", "llama-3.3-70b-versatile");
   const [open, setOpen] = React.useState(false);
 
   const handleToggle = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -91,7 +91,7 @@ export const AISwitch = () => {
         open={open}
         onClose={() => setOpen(false)}
       >
-        <DialogTitle>OpenAI API key</DialogTitle>
+        <DialogTitle>Groq API key</DialogTitle>
         <IconButton
           aria-label="close"
           onClick={() => setOpen(false)}
@@ -108,13 +108,13 @@ export const AISwitch = () => {
           <DialogContent>
             <DialogContentText>
               The AI assistant relies on the{" "}
-              <a href="https://openai.com/blog/openai-api">
-                OpenAI completion API
+              <a href="https://console.groq.com/">
+                Groq API
               </a>
-              , powered by ChatGPT.
+              , powered by Llama.
               <br />
               <br />
-              To enable the assistant, please enter your OpenAI API key. If you
+              To enable the assistant, please enter your Groq API key. If you
               don&apos;t enter an API key, the assistant will suggest lorem
               ipsum text.
               <br />
@@ -125,7 +125,7 @@ export const AISwitch = () => {
               fullWidth
               name="api_key"
               label="API key"
-              helperText="This key will not be sent to any third-party, just to the OpenAI API."
+              helperText="This key will not be sent to any third-party, just to the Groq API."
               defaultValue={localStorage.getItem("ra-ai.openai-api-key")}
               InputProps={{
                 endAdornment: (
@@ -144,8 +144,8 @@ export const AISwitch = () => {
               onChange={(e) => setModel(e.target.value)}
               sx={{ mt: 2 }}
             >
-              <MenuItem value="gpt-4o-mini">GPT-4o Mini</MenuItem>
-              <MenuItem value="gpt-4o">GPT-4o</MenuItem>
+              <MenuItem value="llama-3.3-70b-versatile">Llama 3.3 70B</MenuItem>
+              <MenuItem value="llama-3.1-8b-instant">Llama 3.1 8B</MenuItem>
             </TextField>
           </DialogContent>
           <DialogActions sx={{ mb: 1 }}>
