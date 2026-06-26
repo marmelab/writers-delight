@@ -100,6 +100,7 @@ export const CompositionList = () => {
                   }}
                 />
                 <SimpleList
+                  rowClick="edit"
                   primaryText="%{title}"
                   secondaryText={(record) =>
                     notFirstLine(record.body).substring(0, 50).trim() || <br />
